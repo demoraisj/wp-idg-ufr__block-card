@@ -3,6 +3,7 @@ import { UFRBlockHeader, UFRSelect } from 'wp-idg-ufr__block-components';
 import { Fragment } from 'react';
 
 import './editor.scss';
+import Render from './render';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -61,7 +62,7 @@ export default function edit({ attributes, setAttributes, isSelected }) {
 					</div>
 
 					<div className="row preview">
-						{/* Renderize o componente aqui */}
+						<Render preview={true} />
 					</div>
 				</div>
 			</div>
@@ -76,7 +77,7 @@ export default function edit({ attributes, setAttributes, isSelected }) {
 					<div
 						className={`col-12 d-flex justify-content-${position}`}
 					>
-						{/* Renderize o componente aqui */}
+						<Render />
 					</div>
 				</div>
 			</div>

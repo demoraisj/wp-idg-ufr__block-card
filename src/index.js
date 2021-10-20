@@ -25,7 +25,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'create-block/ufr-card', {
+registerBlockType('create-block/ufr-card', {
 	/**
 	 * @see ./edit.js
 	 */
@@ -35,4 +35,4 @@ registerBlockType( 'create-block/ufr-card', {
 	 * @see ./save.js
 	 */
 	save,
-} );
+});

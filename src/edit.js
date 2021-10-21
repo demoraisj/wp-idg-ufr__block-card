@@ -1,9 +1,6 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { UFRBlockHeader, UFRSelect } from 'wp-idg-ufr__block-components';
-import { Fragment } from 'react';
-
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { UFRBlockHeader } from 'wp-idg-ufr__block-components';
 import './editor.scss';
-import Render from './render';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -13,94 +10,40 @@ import Render from './render';
  *
  * @return {WPElement} Element to render.
  */
-export default function edit({ attributes, setAttributes, isSelected }) {
-	/**
-	 * Desestruturação dos atributos do bloco registrados em block.json -> "attributes"
-	 */
-	const { position } = attributes;
-
-	/**
-	 * Opções para configuração de posição do botão
-	 *
-	 * @type { {label: string, value: string}[] }
-	 */
-	const positioningOptions = [
-		{
-			label: 'Esquerda',
-			value: 'start',
-		},
-		{
-			label: 'Centro',
-			value: 'center',
-		},
-		{
-			label: 'Direita',
-			value: 'end',
-		},
+export default function edit({ isSelected }) {
+	const template = [
+		['create-block/ufr-avatar', { type: 'img' }],
+		['core/heading', { placeholder: 'Book Title' }],
+		['core/heading', { placeholder: 'Book Title' }],
+		['core/heading', { placeholder: 'Book Title' }],
+		['core/heading', { placeholder: 'Book Title' }],
 	];
 
-	/**
-	 * Renderiza o conteúdo. Esconde as configurações do bloco quando ele não está selecionado.
-	 *
-	 * @param { boolean } selected
-	 * @return {JSX.Element} Elemento principal condicional
-	 */
-	function ConditionalMainContentRender(selected) {
-		return selected ? (
-			// Visuzalização quando selecionado
-			<div
-				{...useBlockProps({
-					className: 'edit block-responsive ufr-block-component',
-				})}
-			>
-				<div className="row align-items-center">
-					<div className="col config">
+	return (
+		<div
+			{...useBlockProps({
+				className: `ufr-block-component ${isSelected ? 'edit' : ''}`,
+			})}
+		>
+			<div className="row align-items-center">
+				<div className="col">
+					<div
+						className="config"
+						style={{ display: isSelected ? '' : 'none' }}
+					>
 						<UFRBlockHeader
 							title="Cartão"
 							description="Configure a aparenência do cartão abaixo. Outras configurações podem estar disponíveis no menu á direita."
 						/>
 					</div>
 
-					<div className="row preview">
-						<Render attributes={attributes} preview={true} />
+					<div className="br-card mt-5">
+						<div className="card-content">
+							<InnerBlocks template={template} />
+						</div>
 					</div>
 				</div>
 			</div>
-		) : (
-			// Visuzalização quando não selecionado
-			<div
-				{...useBlockProps({
-					className: 'show block-responsive ufr-block-component',
-				})}
-			>
-				<div className="row">
-					<div
-						className={`col-12 d-flex justify-content-${position}`}
-					>
-						<Render attributes={attributes} />
-					</div>
-				</div>
-			</div>
-		);
-	}
-
-	return (
-		<Fragment>
-			<InspectorControls key="setting">
-				<div id="ufrControls">
-					<fieldset>
-						<UFRSelect
-							label="Posição Horizontal do Cartão"
-							options={positioningOptions}
-							value={position}
-							attr="position"
-							setter={setAttributes}
-						/>
-					</fieldset>
-				</div>
-			</InspectorControls>
-
-			{ConditionalMainContentRender(isSelected)}
-		</Fragment>
+		</div>
 	);
 }

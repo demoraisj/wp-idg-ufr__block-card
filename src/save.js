@@ -1,5 +1,4 @@
-import { useBlockProps } from '@wordpress/block-editor';
-import Render from './render';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -10,17 +9,16 @@ import Render from './render';
  *
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes }) {
-	/**
-	 * Desestruturação dos atributos do bloco registrados em block.json -> "attributes"
-	 */
-	const { position } = attributes;
-
+export default function save() {
 	return (
 		<div {...useBlockProps.save()}>
 			<div className="row">
-				<div className={`col-12 d-flex justify-content-${position}`}>
-					<Render attributes={attributes} />
+				<div className="col">
+					<div className="br-card">
+						<div className="card-content">
+							<InnerBlocks.Content />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

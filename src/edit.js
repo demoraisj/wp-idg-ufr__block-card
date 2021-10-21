@@ -12,11 +12,20 @@ import './editor.scss';
  */
 export default function edit({ isSelected }) {
 	const template = [
-		['create-block/ufr-avatar', { type: 'img' }],
-		['core/heading', { placeholder: 'Book Title' }],
-		['core/heading', { placeholder: 'Book Title' }],
-		['core/heading', { placeholder: 'Book Title' }],
-		['core/heading', { placeholder: 'Book Title' }],
+		['core/spacer', { height: 30 }],
+		['create-block/ufr-avatar', { type: 'img', text: 'Fulano de Tal' }],
+		['core/spacer', { height: 30 }],
+		[
+			'core/paragraph',
+			{
+				content:
+					'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis nam porro atque ex at, numquam non optio ab eveniet error vel ad exercitationem, earum et fugiat recusandae harum? Assumenda.',
+			},
+		],
+		[
+			'create-block/ufr-button',
+			{ text: 'ver currículo', style: '', position: 'end' },
+		],
 	];
 
 	return (
@@ -33,7 +42,7 @@ export default function edit({ isSelected }) {
 					>
 						<UFRBlockHeader
 							title="Cartão"
-							description="Configure a aparenência do cartão abaixo. Outras configurações podem estar disponíveis no menu á direita."
+							description="Dentro deste cartão você pode editar, remover e adicionar outros blocos como desejar."
 						/>
 					</div>
 

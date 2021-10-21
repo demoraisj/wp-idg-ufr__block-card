@@ -62,7 +62,7 @@ export default function edit({ attributes, setAttributes, isSelected }) {
 					</div>
 
 					<div className="row preview">
-						<Render preview={true} />
+						<Render attributes={attributes} preview={true} />
 					</div>
 				</div>
 			</div>
@@ -77,7 +77,7 @@ export default function edit({ attributes, setAttributes, isSelected }) {
 					<div
 						className={`col-12 d-flex justify-content-${position}`}
 					>
-						<Render />
+						<Render attributes={attributes} />
 					</div>
 				</div>
 			</div>

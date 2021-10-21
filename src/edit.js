@@ -57,7 +57,7 @@ export default function edit({ attributes, setAttributes, isSelected }) {
 					<div className="col config">
 						<UFRBlockHeader
 							title="Cartão"
-							subtitle="Configure a aparenência do cartão abaixo. Outras configurações podem estar disponíveis no menu á direita."
+							description="Configure a aparenência do cartão abaixo. Outras configurações podem estar disponíveis no menu á direita."
 						/>
 					</div>
 
